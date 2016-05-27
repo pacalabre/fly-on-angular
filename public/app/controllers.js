@@ -16,15 +16,28 @@ ctrls.controller('InventoryCtrl',['$scope', 'AirplaneAPI',
     console.log("err = " + data)
   })
 
-  $scope.createPlane = function(manufacturer, model, engines) {
+  $scope.createPlane = function(manufacturer, model, engines, image) {
 
     console.log("args:"+manufacturer + model + engines)
     AirplaneAPI.save({
       manufacturer: manufacturer,
       model: model,
-      engines: engines
+      engines: engines,
+      image: image,
     }, function success(plane) {
       console.log(plane)
+      $scope.planes.push(plane);
+    }, function error(data) {
+      console.log(data);
+    })
+  }
+
+  $scope.findPlane = function(model) {
+    console.log("args:"+model)
+    AirplaneAPI.query({
+      model: model,
+    }, function success(plane) {
+      console.log("plane info:"+plane)
       $scope.planes.push(plane);
     }, function error(data) {
       console.log(data);

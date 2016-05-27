@@ -1,13 +1,17 @@
 <div ng-if="planes.length === 0">
   no planes in inventory
 </div>
-
 Make <input type="text" ng-model="manufacturer">
 Model <input type="text" ng-model="model">
 Engines <input type="text" ng-model="engines">
-<button ng-click="createPlane(manufacturer, model, engines)">Add Planes</button>
+IMG <input type="text" ng-model="plane">
+<button ng-click="createPlane(manufacturer, model, engines, image)">Add Planes</button>
 <div ng-repeat="plane in planes">
   Make: {{plane.make}}
   Model: {{plane.model}}
   Engines: {{plane.engines}}
+  Image: {{plane.image}}
 </div>
+<form ng-submit="findPlane(model)">
+Search:<input type="text" ui-sref="results">
+</form>

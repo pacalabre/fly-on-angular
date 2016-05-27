@@ -19,6 +19,10 @@ app.config(['$stateProvider','$urlRouterProvider', '$locationProvider',
         url: '/404',
         templateUrl: 'views/404.html',
       })
+      .state('results', {
+        url: '/results',
+        templateUrl: 'views/results.html',
+      })
 
       $locationProvider.html5Mode(true);
     }])
